@@ -1,0 +1,9 @@
+# OUTPUTS
+node_modules/
+public/bundle.js
+dist/
+
+# MISC
+coverage/
+.vscode/
+.DS_Store
