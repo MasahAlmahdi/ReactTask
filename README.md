@@ -55,3 +55,4 @@ npm test
 1. Use native HTML checkboxes (`<input type="checkbox" />`) as the base, the style doesn't need to be exactly the same.
 1. Focus testing efforts on `MultiCheck` and related components and code. No need to test `App.tsx`.
 1. Adhere to best TypeScript practices throughout the development process.
+# ReactTask
