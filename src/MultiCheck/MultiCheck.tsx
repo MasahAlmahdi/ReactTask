@@ -1,6 +1,6 @@
 import "./MultiCheck.css";
 
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 
 export type Option = {
   label: string;
@@ -35,11 +35,12 @@ const MultiCheck: React.FunctionComponent<Props> = ({
   onChange,
 }): JSX.Element => {
   const [selectedValues, setSelectedValues] = useState<string[]>(values);
+  const prevSelectedValues = useRef(selectedValues);
 
   const isAllSelected = useMemo(
     () => selectedValues.length === options.length,
     [selectedValues, options]
-  ); //check if the all options are selected
+  );
 
   const toggleSelectAll = () => {
     const newSelectedValues = isAllSelected
@@ -55,11 +56,12 @@ const MultiCheck: React.FunctionComponent<Props> = ({
   };
 
   useEffect(() => {
-    if (onChange) {
+    if (onChange && prevSelectedValues.current !== selectedValues) {
       const selectedOptions = options.filter((opt) =>
         selectedValues.includes(opt.value)
       );
       onChange(selectedOptions);
+      prevSelectedValues.current = selectedValues;
     }
   }, [selectedValues, options, onChange]);
 
