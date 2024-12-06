@@ -40,7 +40,7 @@ const MultiCheck: React.FunctionComponent<Props> = ({
   const isAllSelected = useMemo(
     () => selectedValues.length === options.length,
     [selectedValues, options]
-  );
+  ); //check if the all options are selected
 
   const toggleSelectAll = () => {
     const newSelectedValues = isAllSelected

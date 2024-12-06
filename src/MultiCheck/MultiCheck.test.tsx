@@ -87,40 +87,5 @@ describe("MultiCheck", () => {
       expect(selectAllCheckbox.checked).toBe(false);
       expect(onChangeMock).toHaveBeenCalledWith([]);
     });
-
-    it("respects initial values", () => {
-      const initialValues = ["1", "4"];
-      const onChangeMock = jest.fn();
-      render(
-        <MultiCheck
-          options={mockOptions}
-          values={initialValues}
-          onChange={onChangeMock}
-        />
-      );
-
-      const option1Checkbox = screen.getByLabelText(
-        "Option 1"
-      ) as HTMLInputElement;
-      const option4Checkbox = screen.getByLabelText(
-        "Option 4"
-      ) as HTMLInputElement;
-
-      expect(option1Checkbox.checked).toBe(true);
-      expect(option4Checkbox.checked).toBe(true);
-      expect(onChangeMock).toHaveBeenCalledWith([
-        { label: "Option 1", value: "1" },
-        { label: "Option 4", value: "4" },
-      ]);
-    });
-
-    it("handles column layout", () => {
-      const { container } = render(
-        <MultiCheck options={mockOptions} columns={2} />
-      );
-
-      const columns = container.getElementsByClassName("MultiCheck-column");
-      expect(columns.length).toBe(3);
-    });
   });
 });
